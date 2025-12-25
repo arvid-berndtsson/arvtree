@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { defaultConfig } from "@/config"
 import { getIcon } from "@/lib/icons"
+import { hexToRgba } from "@/lib/colors"
 
 // Load config from config.json or use default
 const config = defaultConfig
@@ -43,7 +44,7 @@ function App() {
                 className="h-28 w-28 rounded-full p-[3px] shadow-2xl"
                 style={{
                   background: config.profile.avatarGradient || config.theme.accentColor,
-                  boxShadow: `0 20px 25px -5px ${config.theme.accentColor}30`,
+                  boxShadow: `0 20px 25px -5px ${hexToRgba(config.theme.accentColor, 0.3)}`,
                 }}
               >
                 <div
@@ -87,7 +88,7 @@ function App() {
                 style={{
                   boxShadow: config.theme.useGradient
                     ? undefined
-                    : `0 0 0 1px ${config.theme.accentColor}20`,
+                    : `0 0 0 1px ${hexToRgba(config.theme.accentColor, 0.2)}`,
                 }}
               >
                 <CardContent className="py-4">
@@ -100,7 +101,7 @@ function App() {
                     <div
                       className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl transition-all duration-300"
                       style={{
-                        backgroundColor: `${config.theme.accentColor}20`,
+                        backgroundColor: hexToRgba(config.theme.accentColor, 0.2),
                       }}
                       aria-hidden="true"
                     >
@@ -150,7 +151,7 @@ function App() {
                 backgroundColor: config.theme.buttonGradient?.includes("bg-")
                   ? undefined
                   : config.theme.accentColor,
-                boxShadow: `0 10px 15px -3px ${config.theme.accentColor}25`,
+                boxShadow: `0 10px 15px -3px ${hexToRgba(config.theme.accentColor, 0.25)}`,
               }}
             >
               <a href={`mailto:${config.profile.email}`}>Get in Touch</a>
