@@ -13,7 +13,7 @@ A modern, beautiful Linktree-style personal links page built with React, TypeScr
 
 ## 📦 Tech Stack
 
-- **Framework:** React 18 + TypeScript
+- **Framework:** React 19 + TypeScript
 - **Build Tool:** Vite
 - **Styling:** Tailwind CSS v4
 - **UI Components:** shadcn/ui
