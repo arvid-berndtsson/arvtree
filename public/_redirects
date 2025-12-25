@@ -1,2 +1,2 @@
-# SPA redirect - send all routes to index.html
-/*    /index.html   200
+# Cloudflare Pages will automatically serve index.html for the root path
+# No custom redirects needed for this static site
