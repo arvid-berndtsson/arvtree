@@ -51,16 +51,26 @@ function App() {
           {/* Profile Section */}
           <div className="space-y-4 text-center">
             {/* Avatar */}
-            <div className="relative inline-block">
+            <div
+              className="relative inline-block"
+              role="img"
+              aria-label="Profile picture with initials AB"
+            >
               <div className="h-28 w-28 rounded-full bg-gradient-to-br from-purple-400 via-pink-500 to-blue-500 p-[3px] shadow-2xl shadow-purple-500/30">
                 <div className="flex h-full w-full items-center justify-center rounded-full bg-slate-900">
-                  <span className="bg-gradient-to-br from-purple-400 via-pink-500 to-blue-400 bg-clip-text text-4xl font-bold text-transparent">
+                  <span
+                    className="bg-gradient-to-br from-purple-400 via-pink-500 to-blue-400 bg-clip-text text-4xl font-bold text-transparent"
+                    aria-hidden="true"
+                  >
                     AB
                   </span>
                 </div>
               </div>
               {/* Online indicator */}
-              <div className="absolute right-1 bottom-1 h-5 w-5 rounded-full border-4 border-slate-900 bg-green-500" />
+              <div
+                className="absolute right-1 bottom-1 h-5 w-5 rounded-full border-4 border-slate-900 bg-green-500"
+                aria-label="Online status"
+              />
             </div>
 
             {/* Name and bio */}
@@ -71,36 +81,42 @@ function App() {
           </div>
 
           {/* Links Section */}
-          <div className="space-y-4">
+          <nav className="space-y-4" aria-label="Social media and portfolio links">
             {links.map((link) => (
-              <a
+              <Card
                 key={link.title}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group block"
+                className="group border-white/10 bg-white/5 backdrop-blur-xl transition-all duration-300 hover:scale-[1.02] hover:border-white/20 hover:bg-white/10 hover:shadow-xl hover:shadow-purple-500/10"
               >
-                <Card className="border-white/10 bg-white/5 backdrop-blur-xl transition-all duration-300 hover:scale-[1.02] hover:border-white/20 hover:bg-white/10 hover:shadow-xl hover:shadow-purple-500/10">
-                  <CardContent className="py-4">
-                    <div className="flex items-center gap-4">
-                      <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 text-white transition-all duration-300 group-hover:from-purple-500/30 group-hover:to-pink-500/30">
-                        {link.icon}
-                      </div>
-                      <div className="min-w-0 flex-1">
-                        <h2 className="text-lg font-semibold text-white transition-colors group-hover:text-purple-200">
-                          {link.title}
-                        </h2>
-                        {link.description && (
-                          <p className="truncate text-sm text-slate-400">{link.description}</p>
-                        )}
-                      </div>
-                      <ExternalLink className="size-5 flex-shrink-0 text-slate-500 transition-colors group-hover:text-white" />
+                <CardContent className="py-4">
+                  <a
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4"
+                  >
+                    <div
+                      className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-purple-500/20 to-pink-500/20 text-white transition-all duration-300 group-hover:from-purple-500/30 group-hover:to-pink-500/30"
+                      aria-hidden="true"
+                    >
+                      {link.icon}
                     </div>
-                  </CardContent>
-                </Card>
-              </a>
+                    <div className="min-w-0 flex-1">
+                      <h2 className="text-lg font-semibold text-white transition-colors group-hover:text-purple-200">
+                        {link.title}
+                      </h2>
+                      {link.description && (
+                        <p className="truncate text-sm text-slate-400">{link.description}</p>
+                      )}
+                    </div>
+                    <ExternalLink
+                      className="size-5 flex-shrink-0 text-slate-500 transition-colors group-hover:text-white"
+                      aria-hidden="true"
+                    />
+                  </a>
+                </CardContent>
+              </Card>
             ))}
-          </div>
+          </nav>
 
           {/* CTA Button */}
           <div className="pt-4">

@@ -1,0 +1,2 @@
+# Cloudflare Pages will automatically serve index.html for the root path
+# No custom redirects needed for this static site
