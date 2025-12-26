@@ -92,35 +92,46 @@ npm run preview
 
 ## 🎨 Customization
 
-### Update Links
+This project now supports easy customization through a configuration file! See [CONFIG.md](CONFIG.md) for detailed documentation.
 
-Edit the `links` array in `src/App.tsx`:
+### Quick Start
+
+Edit `src/config.ts` to customize your page:
 
 ```typescript
-const links: LinkItem[] = [
-  {
-    title: "Your Link Title",
-    url: "https://your-url.com",
-    icon: <YourIcon className="size-5" />,
-    description: "Optional description",
+export const defaultConfig: Config = {
+  profile: {
+    name: "Your Name",
+    initials: "YN",
+    bio: "Your tagline here",
+    email: "your.email@example.com",
+    avatarBackground: "bg-black"
   },
-  // Add more links...
-]
+  theme: {
+    background: "bg-black",
+    useGradient: false,
+    accentColor: "#32CD32", // Your color here
+    // ... more theme options
+  },
+  links: [
+    {
+      title: "GitHub",
+      url: "https://github.com/yourusername",
+      icon: "Github",
+      description: "View my projects"
+    },
+    // Add more links...
+  ]
+}
 ```
 
-### Update Profile
+### Available Themes
 
-Modify the profile section in `src/App.tsx` to change:
-- Name
-- Bio/tagline
-- Avatar initials
-- Contact email
+- **Black + Lime Green** (default) - Clean, professional look with lime green accents
+- **Purple Gradient** - Original colorful theme with animated gradients
+- **Custom** - Create your own with any colors and gradients
 
-### Change Colors
-
-The gradient colors can be adjusted in:
-- Background: `from-slate-900 via-purple-900 to-slate-900`
-- Accent elements: Purple/pink/blue gradients throughout
+For more examples and detailed configuration options, see [CONFIG.md](CONFIG.md).
 
 ## 📄 License
 
