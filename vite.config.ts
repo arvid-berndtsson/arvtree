@@ -1,14 +1,13 @@
-import path from "path"
+import { fileURLToPath } from "node:url"
 import { defineConfig } from "vite"
+import { tanstackStart } from "@tanstack/react-start/plugin/vite"
 import react from "@vitejs/plugin-react"
-import tailwindcss from "@tailwindcss/vite"
 
-// https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "./src"),
-    },
-  },
+  plugins: [
+    tanstackStart({ prerender: { enabled: true, failOnError: true, crawlLinks: false } }),
+    react(),
+  ],
+  resolve: { alias: { "@": fileURLToPath(new URL("./src", import.meta.url)) } },
+  server: { port: 3000 },
 })

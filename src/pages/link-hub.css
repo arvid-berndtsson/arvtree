@@ -1,0 +1,126 @@
+.link-hub {
+  --hub-ink: #28251f;
+  --hub-orange: hsl(24.6 95% 53.1%);
+  min-height: 100svh;
+  padding: 48px 24px 56px;
+  background: var(--hub-orange);
+  color: var(--hub-ink);
+  color-scheme: light;
+}
+.hub-content {
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+}
+.hub-intro {
+  margin-bottom: 28px;
+}
+.hub-identity {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+.hub-identity h1 {
+  font-size: clamp(38px, 7vw, 48px);
+  font-weight: 650;
+  line-height: 0.98;
+  letter-spacing: -2px;
+  margin: 0;
+}
+.hub-identity img {
+  flex: 0 0 auto;
+  transform: none;
+}
+.hub-role {
+  font-size: 16px;
+  font-weight: 550;
+  line-height: 1.5;
+  margin: 23px 0 8px;
+}
+.hub-bio {
+  max-width: 470px;
+  font-size: 15px;
+  line-height: 1.55;
+  margin: 0;
+}
+.hub-links {
+  display: grid;
+  gap: 10px;
+}
+.hub-link {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  min-height: 78px;
+  padding: 17px 24px;
+  border-radius: 8px;
+  background: var(--hub-ink);
+  color: #fff4e9;
+  overflow-wrap: anywhere;
+}
+.hub-link-icon {
+  flex: 0 0 30px;
+  width: 30px;
+  color: var(--hub-orange);
+}
+.hub-link-copy {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+}
+.hub-link-title {
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+}
+.hub-link-description {
+  color: #eee0d3;
+  font-size: 15px;
+  line-height: 1.5;
+}
+.hub-link-featured {
+  min-height: 108px;
+  padding-block: 22px;
+}
+.hub-link-featured .hub-link-title {
+  font-size: 29px;
+  letter-spacing: -0.9px;
+}
+.hub-link-featured .hub-link-description {
+  max-width: 340px;
+}
+.hub-link-featured .hub-link-icon {
+  width: 30px;
+  height: 30px;
+  color: var(--hub-orange);
+}
+.hub-link:hover,
+.hub-link:focus-visible {
+  background: #3c3228;
+  text-decoration: none;
+}
+.hub-link:focus-visible {
+  outline: 3px solid var(--hub-ink);
+  outline-offset: 3px;
+}
+.hub-link:active {
+  scale: 0.99;
+}
+@media (max-width: 540px) {
+  .link-hub {
+    padding: 30px 20px 36px;
+  }
+  .hub-identity img {
+    width: 55px;
+    height: 55px;
+  }
+  .hub-intro {
+    margin-bottom: 24px;
+  }
+  .hub-link {
+    gap: 16px;
+    padding: 17px 18px;
+  }
+}

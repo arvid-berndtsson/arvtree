@@ -1,138 +1,58 @@
-# Arvid Berndtsson - Personal Links
+# Arvid Tree
 
-A modern, beautiful Linktree-style personal links page built with React, TypeScript, Tailwind CSS, and shadcn/ui.
+A personal link page for https://links.arvid.tech, inspired by arvid.tech. Built with React 19 and TanStack Start, prerendered to static HTML for Cloudflare Pages.
 
-## 🚀 Features
+## Development
 
-- ⚡ Built with Vite for lightning-fast development
-- 🎨 Modern UI with shadcn/ui components
-- 💨 Tailwind CSS for utility-first styling
-- 📱 Fully responsive design
-- 🌙 Beautiful gradient background with animated elements
-- 🔒 Security headers configured for Cloudflare Pages
+Use Node 22.12 or newer.
 
-## 📦 Tech Stack
-
-- **Framework:** React 19 + TypeScript
-- **Build Tool:** Vite
-- **Styling:** Tailwind CSS v4
-- **UI Components:** shadcn/ui
-- **Icons:** Lucide React
-- **Hosting:** Cloudflare Pages
-
-## 🛠️ Development
-
-### Prerequisites
-
-- Node.js 18+
-- npm or pnpm
-
-### Install dependencies
-
-```bash
-npm install
-```
-
-### Start development server
-
-```bash
+```sh
+npm ci
 npm run dev
 ```
 
-### Build for production
+The development server runs at http://localhost:3000.
 
-```bash
-npm run build
-```
-
-### Preview production build
-
-```bash
+```sh
+npm run check
 npm run preview
 ```
 
-## ☁️ Deploying to Cloudflare Pages
+`check` runs formatting, ESLint, the production build, TypeScript, and assertions against the generated HTML. `preview` serves `dist/client` through Cloudflare's local Pages runtime at http://localhost:4173. Build before previewing.
 
-### Option 1: Connect to Git (Recommended)
+## Content and design
 
-1. Push this repository to GitHub/GitLab
-2. Go to [Cloudflare Pages Dashboard](https://dash.cloudflare.com/?to=/:account/pages)
-3. Click "Create a project" → "Connect to Git"
-4. Select your repository
-5. Configure build settings:
-   - **Build command:** `npm run build`
-   - **Build output directory:** `dist`
-6. Click "Save and Deploy"
+- `src/data/links.ts`: profile, project links, and social destinations.
+- `src/index.css`: global styles and self-hosted fonts.
+- `src/pages/LinkHub.tsx` and `src/pages/link-hub.css`: the homepage layout and link styles.
+- `src/routes/index.tsx`: SEO metadata and Person/ProfilePage/ItemList structured data.
+- `public/og-image.png`: 1200×630 social share image. Run `node scripts/generate-og.mjs` to regenerate it.
 
-### Option 2: Direct Upload
+Links work without JavaScript. The homepage is a single-column link hub using the approved orange and upright logo. There are no analytics, external font requests, or runtime API calls.
 
-1. Build the project locally:
-   ```bash
-   npm run build
-   ```
-2. Go to Cloudflare Pages Dashboard
-3. Click "Create a project" → "Direct Upload"
-4. Upload the `dist` folder
+## Cloudflare Pages
 
-### Option 3: Wrangler CLI
+Use the existing `arvtree` Pages project with:
 
-1. Install Wrangler:
-   ```bash
-   npm install -g wrangler
-   ```
-2. Login to Cloudflare:
-   ```bash
-   wrangler login
-   ```
-3. Deploy:
-   ```bash
-   npm run build
-   wrangler pages deploy dist
-   ```
+- Build command: `npm run build`
+- Output directory: `dist/client`
+- Node version: `22`
+- Custom domain: `links.arvid.tech`
 
-## 🎨 Customization
+For a manual deployment:
 
-This project now supports easy customization through a configuration file! See [CONFIG.md](CONFIG.md) for detailed documentation.
-
-### Quick Start
-
-Edit `src/config.ts` to customize your page:
-
-```typescript
-export const defaultConfig: Config = {
-  profile: {
-    name: "Your Name",
-    initials: "YN",
-    bio: "Your tagline here",
-    email: "your.email@example.com",
-    avatarBackground: "bg-black"
-  },
-  theme: {
-    background: "bg-black",
-    useGradient: false,
-    accentColor: "#32CD32", // Your color here
-    // ... more theme options
-  },
-  links: [
-    {
-      title: "GitHub",
-      url: "https://github.com/yourusername",
-      icon: "Github",
-      description: "View my projects"
-    },
-    // Add more links...
-  ]
-}
+```sh
+npx wrangler login
+npx wrangler whoami
+npm run deploy
 ```
 
-### Available Themes
+Only `dist/client` is deployed. The generated server bundle in `dist/server` is used during prerendering and is not required in production. A real `404.html` prevents Pages from returning the home page with a successful status for nonexistent URLs. Hashed assets have immutable caching; HTML uses Pages' default revalidation. The pages.dev domain is marked noindex.
 
-- **Black + Lime Green** (default) - Clean, professional look with lime green accents
-- **Purple Gradient** - Original colorful theme with animated gradients
-- **Custom** - Create your own with any colors and gradients
+The production domain is explicit in `src/data/links.ts`, `public/robots.txt`, and `public/sitemap.xml`. Update all three and the build assertions if you move domains. Add the custom domain in the Pages dashboard before publishing, then submit the sitemap in Google Search Console. Search rankings and indexing depend on search engines; the build supplies crawlable content and technical SEO metadata.
 
-For more examples and detailed configuration options, see [CONFIG.md](CONFIG.md).
+## Design
 
-## 📄 License
+The homepage is the only content page. Its six full-width links come from `hubLinks` in `src/data/links.ts`. Add featured projects to `projects` in the same file.
 
-MIT License - feel free to use this for your own personal links page!
+The orange is the primary color from arvid.tech, `hsl(24.6 95% 53.1%)`. Keep the Arvid logo upright. Keep the page free of divider lines, eyebrows, and duplicate links to arvid.tech.

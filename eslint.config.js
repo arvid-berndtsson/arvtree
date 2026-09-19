@@ -6,8 +6,9 @@ import tseslint from "typescript-eslint"
 
 export default [
   {
-    ignores: ["dist"],
+    ignores: ["dist", ".wrangler", ".tanstack", "src/routeTree.gen.ts"],
   },
+  { files: ["scripts/**/*.mjs"], languageOptions: { globals: globals.node } },
   js.configs.recommended,
   ...tseslint.configs.recommended,
   {
