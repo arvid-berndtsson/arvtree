@@ -15,7 +15,7 @@ export const Route = createRootRoute({
   }),
   component: Root,
   notFoundComponent: () => (
-    <main className="site-shell not-found">
+    <main className="not-found">
       <h1>Page not found</h1>
       <p>Check the address or return to the links page.</p>
       <a href="/">View links →</a>

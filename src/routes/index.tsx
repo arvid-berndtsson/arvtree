@@ -43,7 +43,6 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title },
-      { name: "theme-color", content: "hsl(24.6 95% 53.1%)" },
       { name: "description", content: profile.description },
       { name: "author", content: profile.name },
       { name: "robots", content: "index, follow, max-image-preview:large" },

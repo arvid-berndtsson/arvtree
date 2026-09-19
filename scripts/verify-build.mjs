@@ -4,7 +4,7 @@ import { readFile, readdir } from "node:fs/promises"
 const root = new URL("../dist/client/", import.meta.url)
 const html = await readFile(new URL("index.html", root), "utf8")
 assert.match(html.replace(/<[^>]+>/g, ""), /Arvid Berndtsson/)
-for (const destination of ["https://tapid.dev", "https://arvid.tech", "mailto:hello@arvid.tech"]) {
+for (const destination of ["https://tapid.dev", "https://arvid.tech", "mailto:hej@arvid.tech"]) {
   assert.ok(html.includes(`href="${destination}"`), `Missing prerendered link: ${destination}`)
 }
 assert.match(html, /rel="canonical"[^>]*href="https:\/\/links.arvid.tech\/"/)
