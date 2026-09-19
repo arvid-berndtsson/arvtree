@@ -16,19 +16,22 @@
   margin-bottom: 32px;
 }
 .hub-identity {
+  --identity-font-size: clamp(38px, 7vw, 56px);
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 24px;
 }
 .hub-identity h1 {
-  font-size: clamp(38px, 7vw, 56px);
+  font-size: var(--identity-font-size);
   font-weight: 650;
   line-height: 1;
   letter-spacing: -2px;
   margin: 0;
 }
 .hub-identity img {
+  width: calc(var(--identity-font-size) * 2);
+  height: calc(var(--identity-font-size) * 2);
   flex: 0 0 auto;
   transform: none;
 }
@@ -46,13 +49,15 @@
 }
 .hub-links {
   display: grid;
+  grid-auto-rows: 1fr;
   gap: 12px;
 }
 .hub-link {
   display: flex;
   align-items: center;
   gap: 20px;
-  min-height: 78px;
+  min-height: 96px;
+  height: 100%;
   padding: 17px 24px;
   border-radius: 12px;
   background: #fffcf8;
@@ -80,22 +85,6 @@
   font-size: 15px;
   line-height: 1.5;
 }
-.hub-link-featured {
-  min-height: 108px;
-  padding-block: 24px;
-}
-.hub-link-featured .hub-link-title {
-  font-size: 29px;
-  letter-spacing: -0.9px;
-}
-.hub-link-featured .hub-link-description {
-  max-width: 420px;
-}
-.hub-link-featured .hub-link-icon {
-  width: 30px;
-  height: 30px;
-  color: var(--hub-ink);
-}
 .hub-link:hover,
 .hub-link:focus-visible {
   background: #fff;
@@ -116,9 +105,9 @@
   .link-hub {
     padding: 30px 20px 36px;
   }
-  .hub-identity img {
-    width: 55px;
-    height: 55px;
+  .hub-identity {
+    --identity-font-size: clamp(30px, 10vw, 38px);
+    gap: 16px;
   }
   .hub-role {
     font-size: 16px;

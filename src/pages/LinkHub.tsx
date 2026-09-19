@@ -25,7 +25,7 @@ export function LinkHub() {
               return (
                 <li key={link.href}>
                   <a
-                    className={socialLink ? "hub-link" : "hub-link hub-link-featured"}
+                    className="hub-link"
                     href={link.href}
                     rel={link.title === "Mastodon" ? "me" : undefined}
                   >
