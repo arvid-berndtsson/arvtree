@@ -1,4 +1,5 @@
-import { Github, Linkedin, Mail } from "lucide-react"
+import { Github, Mail } from "lucide-react"
+import { LinkedInIcon } from "@/components/LinkedInIcon"
 import { MastodonIcon } from "@/components/MastodonIcon"
 
 export const profile = {
@@ -43,7 +44,7 @@ export const social = [
     title: "LinkedIn",
     href: "https://linkedin.com/in/arvid-berndtsson",
     description: "My professional profile and experience.",
-    icon: Linkedin,
+    icon: LinkedInIcon,
   },
   {
     title: "Mastodon",
