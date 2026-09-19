@@ -55,4 +55,4 @@ The production domain is explicit in `src/data/links.ts`, `public/robots.txt`, a
 
 The homepage is the only content page. Its six full-width links come from `hubLinks` in `src/data/links.ts`. Add featured projects to `projects` in the same file.
 
-The orange is the primary color from arvid.tech, `hsl(24.6 95% 53.1%)`. Keep the Arvid logo upright. Keep the page free of divider lines, eyebrows, and duplicate links to arvid.tech.
+The orange is the primary color from arvid.tech, `hsl(24.6 95% 53.1%)`. Keep the Arvid logo upright and preserve its original color, including in the favicon. Keep the page free of divider lines, eyebrows, and duplicate links to arvid.tech.
