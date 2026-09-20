@@ -13,6 +13,7 @@ const schema = {
       name: profile.name,
       url: home.href,
       jobTitle: profile.role,
+      email: profile.email,
       description: profile.bio,
       sameAs: social.filter((link) => link.href.startsWith("https:")).map((link) => link.href),
     },
@@ -29,12 +30,14 @@ const schema = {
       "@type": "ItemList",
       "@id": `${profile.url}/#links`,
       name: "Arvid Berndtsson’s website, projects, and profiles",
-      itemListElement: hubLinks.map((link, index) => ({
-        "@type": "ListItem",
-        position: index + 1,
-        name: link.title,
-        url: link.href,
-      })),
+      itemListElement: hubLinks
+        .filter((link) => !link.href.startsWith("mailto:"))
+        .map((link, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          name: link.title,
+          url: link.href,
+        })),
     },
   ],
 }

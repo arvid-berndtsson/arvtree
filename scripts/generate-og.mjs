@@ -1,8 +1,9 @@
 import sharp from "sharp"
 import { readFile } from "node:fs/promises"
-const logo = (await readFile(new URL("../public/logo.svg", import.meta.url), "utf8"))
-  .replace('width="100" height="100"', 'x="1000" y="90" width="95" height="95"')
-  .replace('stroke="currentColor"', 'stroke="#28251f"')
+const logo = (await readFile(new URL("../public/logo.svg", import.meta.url), "utf8")).replace(
+  'width="100" height="100"',
+  'x="1000" y="90" width="95" height="95"'
+)
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630">
 <rect width="1200" height="630" fill="hsl(24.6,95%,53.1%)"/>${logo}
 <g font-family="Helvetica, Arial, sans-serif" fill="#28251f">

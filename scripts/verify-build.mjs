@@ -4,9 +4,11 @@ import { readFile, readdir } from "node:fs/promises"
 const root = new URL("../dist/client/", import.meta.url)
 const html = await readFile(new URL("index.html", root), "utf8")
 assert.match(html.replace(/<[^>]+>/g, ""), /Arvid Berndtsson/)
-for (const destination of ["https://tapid.dev", "https://arvid.tech", "mailto:hej@arvid.tech"]) {
+for (const destination of ["https://tapid.dev", "https://arvid.tech"]) {
   assert.ok(html.includes(`href="${destination}"`), `Missing prerendered link: ${destination}`)
 }
+assert.ok(html.includes("Copy email address hej@arvid.tech"), "Email card must offer copy")
+assert.ok(!html.includes('href="mailto:'), "Email must not launch a mail client")
 assert.match(html, /rel="canonical"[^>]*href="https:\/\/links.arvid.tech\/"/)
 assert.match(html, /property="og:image"[^>]*og-image.png/)
 const jsonLd = html.match(/<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/)

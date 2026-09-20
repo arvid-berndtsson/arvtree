@@ -28,7 +28,7 @@ npm run preview
 - `src/routes/index.tsx`: SEO metadata and Person/ProfilePage/ItemList structured data.
 - `public/og-image.png`: 1200×630 social share image. Run `node scripts/generate-og.mjs` to regenerate it.
 
-Links work without JavaScript. The homepage is a single-column link hub using the approved orange and upright logo. There are no analytics, external font requests, or runtime API calls.
+Website and profile links work without JavaScript. The email card copies `hej@arvid.tech` and announces “Email copied”. If clipboard access fails or JavaScript is disabled, the address remains available to select and copy manually. The homepage is a single-column link hub using the approved orange and upright logo. There are no analytics, external font requests, or runtime API calls.
 
 ## Cloudflare Pages
 
@@ -56,3 +56,9 @@ The production domain is explicit in `src/data/links.ts`, `public/robots.txt`, a
 The homepage is the only content page. Its six full-width links come from `hubLinks` in `src/data/links.ts`. Add featured projects to `projects` in the same file.
 
 The orange is the primary color from arvid.tech, `hsl(24.6 95% 53.1%)`. Keep the Arvid logo upright and preserve its original color, including in the favicon. Keep the page free of divider lines, eyebrows, and duplicate links to arvid.tech.
+
+## Runtime and CI
+
+TanStack Start prerenders the page and hydrates it for the email copy button. The production JavaScript baseline is about 107 KB gzip. Deferred hydration is experimental and does not remove the core React/router runtime, so it is not used for this small page or its immediately usable copy control. See the [TanStack guidance](https://tanstack.com/start/latest/docs/framework/react/guide/deferred-hydration).
+
+CI checks formatting, lint, types, and the static build. It does not automatically edit or push to main. Run `npm run format` and `npm run lint:fix` locally when needed.
